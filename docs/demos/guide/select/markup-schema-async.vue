@@ -1,5 +1,5 @@
 <template>
-  <Form :form="form">
+  <FormProvider :form="form">
     <SchemaField>
       <SchemaNumberField
         name="linkage"
@@ -29,17 +29,23 @@
       />
     </SchemaField>
     <Submit @submit="onSubmit">提交</Submit>
-  </Form>
+  </FormProvider>
 </template>
 
-<script>
-import { createForm, onFieldReact } from '@formily/core'
-import { createSchemaField } from '@formily/vue'
+<script lang="ts" setup>
+import { createForm, onFieldReact, DataField } from '@formily/core'
+import { createSchemaField, FormProvider } from '@formily/vue'
 import { action } from '@formily/reactive'
-import { Form, FormItem, Select, Submit, Reset } from '@formily/tdesign-vue-next'
+import {
+  Form,
+  FormItem,
+  Select,
+  Submit,
+  Reset,
+} from 'formilyjs-tdesign-vue-next'
 
 const useAsyncDataSource = (pattern, service) => {
-  onFieldReact(pattern, (field) => {
+  onFieldReact(pattern, (field: DataField) => {
     field.loading = true
     service(field).then(
       action.bound((data) => {
@@ -54,6 +60,7 @@ const form = createForm({
   effects: () => {
     useAsyncDataSource('select', async (field) => {
       const linkage = field.query('linkage').get('value')
+      console.log(linkage)
       if (!linkage) return []
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -85,24 +92,16 @@ const form = createForm({
     })
   },
 })
-const fields = createSchemaField({
-  components: {
-    FormItem,
-    Select,
-  },
-})
-
-export default {
-  components: { Form, ...fields, Submit, Reset },
-  data() {
-    return {
-      form,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
+const { SchemaField, SchemaNumberField, SchemaStringField } = createSchemaField(
+  {
+    components: {
+      FormItem,
+      Select,
     },
-  },
+  }
+)
+
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

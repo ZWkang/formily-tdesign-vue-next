@@ -84,13 +84,13 @@
         </SchemaVoidField>
       </SchemaField>
       <FormButtonGroup alignFormItem>
-        <Submit onSubmit="log">提交</Submit>
+        <Submit @submit="log">提交</Submit>
       </FormButtonGroup>
     </FormLayout>
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { createSchemaField, FormProvider } from '@formily/vue'
 import {
@@ -100,25 +100,15 @@ import {
   Space,
   FormButtonGroup,
   Submit,
-} from '@formily/tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
 
-const fields = createSchemaField({
+const { SchemaField, SchemaVoidField, SchemaStringField } = createSchemaField({
   components: { FormItem, FormLayout, Input, Space },
 })
 
-export default {
-  components: { FormProvider, FormLayout, FormButtonGroup, Submit, ...fields },
-  data() {
-    const form = createForm()
-    return {
-      form,
-    }
-  },
+const form = createForm()
 
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

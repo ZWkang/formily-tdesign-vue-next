@@ -1,6 +1,12 @@
 <template>
   <FormProvider :form="form">
-    <FormLayout :labelCol="6" :wrapperCol="10">
+    <FormLayout
+      :breakpoints="[680]"
+      layout="horizontal"
+      label-align="left"
+      :label-col="6"
+      :wrapper-col="10"
+    >
       <Field
         name="input"
         title="输入框"
@@ -24,22 +30,10 @@
   </FormProvider>
 </template>
 
-<script>
+<script setup lang="ts">
 import { createForm } from '@formily/core'
 import { FormProvider, Field } from '@formily/vue'
-import { FormLayout, FormItem, Input, Select } from '@formily/tdesign-vue-next'
+import { FormLayout, FormItem, Input, Select } from 'formilyjs-tdesign-vue-next'
 
-export default {
-  components: { FormProvider, Field, FormLayout },
-  data() {
-    const form = createForm()
-    return {
-      FormLayout,
-      FormItem,
-      Input,
-      Select,
-      form,
-    }
-  },
-}
+const form = createForm()
 </script>

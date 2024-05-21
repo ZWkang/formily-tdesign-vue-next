@@ -16,4 +16,4 @@
 
 ## API
 
-参考 [https://element.eleme.io/#/zh-CN/component/time-picker](https://element.eleme.io/#/zh-CN/component/time-picker)
+参考 [https://element-plus.gitee.io/zh-CN/component/time-picker.html](https://element-plus.gitee.io/zh-CN/component/time-picker.html)

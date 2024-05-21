@@ -1,14 +1,14 @@
 <template>
-  <Form :form="form">
+  <FormProvider :form="form">
     <SchemaField :schema="schema" />
     <Submit @submit="onSubmit">提交</Submit>
-  </Form>
+  </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
-import { createSchemaField } from '@formily/vue'
-import { Form, FormItem, Input, Submit } from '@formily/tdesign-vue-next'
+import { createSchemaField, FormProvider } from '@formily/vue'
+import { FormItem, Input, Submit } from 'formilyjs-tdesign-vue-next'
 
 const schema = {
   type: 'object',
@@ -36,18 +36,7 @@ const { SchemaField } = createSchemaField({
   },
 })
 
-export default {
-  components: { Form, SchemaField, Submit },
-  data() {
-    return {
-      form,
-      schema,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

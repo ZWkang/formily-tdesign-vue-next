@@ -18,7 +18,7 @@
 
 ## 概要
 
-这是一个结合了 Formily & tdesign-vue-next的超酷组件库.
+这是一个结合了 Formily & tdesign-vue-next 的超酷组件库.
 
 ## 特性
 
@@ -51,6 +51,10 @@ https://tdesign-vue-next.formilyjs.org
 
 This project exists thanks to all the people who contribute.
 <a href="https://github.com/formilyjs/tdesign-vue-next/graphs/contributors"><img src="https://contrib.rocks/image?repo=formilyjs/tdesign-vue-next" /></a>
+
+## Thanks
+
+Thanks a lot from @formilyjs/element-plus, this project is based on @formilyjs/element-plus.
 
 ## LICENSE
 

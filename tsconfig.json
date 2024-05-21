@@ -16,7 +16,7 @@
     "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {
-      "@formily/*": ["packages/*/src"]
+      "formilyjs-tdesign-vue-next": ["packages/components/src"]
     }
   }
 }

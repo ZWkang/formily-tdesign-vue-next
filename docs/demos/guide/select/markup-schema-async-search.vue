@@ -19,11 +19,11 @@
   </FormProvider>
 </template>
 
-<script>
-import { createForm, onFieldInit, onFieldReact } from '@formily/core'
+<script lang="ts" setup>
+import { createForm, onFieldInit, onFieldReact, DataField } from '@formily/core'
 import { action, observable } from '@formily/reactive'
 import { createSchemaField, FormProvider } from '@formily/vue'
-import { FormItem, Select, Submit } from '@formily/tdesign-vue-next'
+import { FormItem, Select, Submit } from 'formilyjs-tdesign-vue-next'
 
 let timeout
 let currentValue
@@ -62,7 +62,7 @@ const useAsyncDataSource = (pattern, service) => {
     })
   })
 
-  onFieldReact(pattern, (field) => {
+  onFieldReact(pattern, (field: DataField) => {
     field.loading = true
     service({ field, keyword: keyword.value }).then(
       action.bound((data) => {
@@ -85,24 +85,14 @@ const form = createForm({
     })
   },
 })
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     Select,
   },
 })
 
-export default {
-  components: { FormProvider, ...fields, Submit },
-  data() {
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

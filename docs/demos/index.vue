@@ -43,21 +43,19 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
-import { InputNumber, FormItem, Space } from '@formily/tdesign-vue-next'
+import { InputNumber, FormItem, Space } from 'formilyjs-tdesign-vue-next'
 import { FormProvider, FormConsumer, Field } from '@formily/vue'
+import { onRenderTracked, onRenderTriggered } from 'vue'
+
+onRenderTracked((event) => {
+  debugger
+})
+
+onRenderTriggered((event) => {
+  debugger
+})
 
 const form = createForm()
-
-export default {
-  components: { FormProvider, FormConsumer, Field, FormItem, Space },
-  data() {
-    return {
-      form,
-      InputNumber,
-      FormItem,
-    }
-  },
-}
 </script>

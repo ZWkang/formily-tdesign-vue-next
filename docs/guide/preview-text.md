@@ -14,23 +14,23 @@
 
 ### PreviewText.Input
 
-参考 [https://element.eleme.io/#/zh-CN/component/input](https://element.eleme.io/#/zh-CN/component/input)
+参考 [https://element-plus.gitee.io/zh-CN/component/input.html](https://element-plus.gitee.io/zh-CN/component/input.html)
 
 ### PreviewText.Select
 
-参考 [https://element.eleme.io/#/zh-CN/component/select](https://element.eleme.io/#/zh-CN/component/select)
+参考 [https://element-plus.gitee.io/zh-CN/component/select.html](https://element-plus.gitee.io/zh-CN/component/select.html)
 
 ### PreviewText.Cascader
 
-参考 [https://element.eleme.io/#/zh-CN/component/cascader](https://element.eleme.io/#/zh-CN/component/cascader)
+参考 [https://element-plus.gitee.io/zh-CN/component/cascader.html](https://element-plus.gitee.io/zh-CN/component/cascader.html)
 
 ### PreviewText.DatePicker
 
-参考 [https://element.eleme.io/#/zh-CN/component/date-picker](https://element.eleme.io/#/zh-CN/component/date-picker)
+参考 [https://element-plus.gitee.io/zh-CN/component/date-picker.html](https://element-plus.gitee.io/zh-CN/component/date-picker.html)
 
 ### PreviewText.TimePicker
 
-参考 [https://element.eleme.io/#/zh-CN/component/time-picker](https://element.eleme.io/#/zh-CN/component/time-picker)
+参考 [https://element-plus.gitee.io/zh-CN/component/time-picker.html](https://element-plus.gitee.io/zh-CN/component/time-picker.html)
 
 ### PreviewText
 

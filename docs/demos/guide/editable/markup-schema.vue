@@ -66,7 +66,7 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/vue'
 import {
@@ -76,39 +76,22 @@ import {
   Input,
   DatePicker,
   Editable,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
 
-const SchemaField = createSchemaField({
-  components: {
-    FormItem,
-    Input,
-    DatePicker,
-    Editable,
-  },
-})
-
-export default {
-  components: {
-    FormButtonGroup,
-    FormProvider,
-    Button,
-    Submit,
-    ...SchemaField,
-  },
-
-  data() {
-    const form = createForm()
-
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(values) {
-      console.log(values)
+const { SchemaField, SchemaStringField, SchemaVoidField, SchemaObjectField } =
+  createSchemaField({
+    components: {
+      FormItem,
+      Input,
+      DatePicker,
+      Editable,
     },
-  },
+  })
+
+const form = createForm()
+
+const log = (values) => {
+  console.log(values)
 }
 </script>
 

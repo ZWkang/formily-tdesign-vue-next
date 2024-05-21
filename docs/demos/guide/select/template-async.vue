@@ -34,14 +34,20 @@
   </Form>
 </template>
 
-<script>
-import { createForm, onFieldReact } from '@formily/core'
+<script lang="ts" setup>
+import { createForm, onFieldReact, DataField } from '@formily/core'
 import { Field } from '@formily/vue'
 import { action } from '@formily/reactive'
-import { Form, FormItem, Select, Submit, Reset } from '@formily/tdesign-vue-next'
+import {
+  Form,
+  FormItem,
+  Select,
+  Submit,
+  Reset,
+} from 'formilyjs-tdesign-vue-next'
 
 const useAsyncDataSource = (pattern, service) => {
-  onFieldReact(pattern, (field) => {
+  onFieldReact(pattern, (field: DataField) => {
     field.loading = true
     service(field).then(
       action.bound((data) => {
@@ -89,19 +95,7 @@ const form = createForm({
   },
 })
 
-export default {
-  components: { Form, Field, Submit, Reset },
-  data() {
-    return {
-      form,
-      FormItem,
-      Select,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

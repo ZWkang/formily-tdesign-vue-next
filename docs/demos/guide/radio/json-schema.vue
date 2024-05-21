@@ -5,10 +5,10 @@
   </Form>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/vue'
-import { Form, FormItem, Radio, Submit } from '@formily/tdesign-vue-next'
+import { Form, FormItem, Radio, Submit } from 'formilyjs-tdesign-vue-next'
 
 const { SchemaField } = createSchemaField({
   components: {
@@ -17,45 +17,34 @@ const { SchemaField } = createSchemaField({
   },
 })
 
-export default {
-  components: { Form, SchemaField, Submit },
-  data() {
-    const schema = {
-      type: 'object',
-      properties: {
-        radio: {
-          type: 'boolean',
-          title: '单选',
-          enum: [
-            {
-              label: '选项1',
-              value: 1,
-            },
-            {
-              label: '选项2',
-              value: 2,
-            },
-          ],
-          'x-decorator': 'FormItem',
-          'x-component': 'Radio.Group',
-          'x-component-props': {
-            optionType: 'button',
-          },
+const schema = {
+  type: 'object',
+  properties: {
+    radio: {
+      type: 'boolean',
+      title: '单选',
+      enum: [
+        {
+          label: '选项1',
+          value: 1,
         },
+        {
+          label: '选项2',
+          value: 2,
+        },
+      ],
+      'x-decorator': 'FormItem',
+      'x-component': 'Radio.Group',
+      'x-component-props': {
+        optionType: 'button',
       },
-    }
-
-    const form = createForm()
-
-    return {
-      form,
-      schema,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
     },
   },
+}
+
+const form = createForm()
+
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

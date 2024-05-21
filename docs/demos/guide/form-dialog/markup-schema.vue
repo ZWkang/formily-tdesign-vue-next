@@ -1,17 +1,18 @@
 <template>
   <FormDialogPortal :id="portalId">
-    <Button @click="handleOpen">点击打开表单</Button>
+    <ElButton @click="handleOpen">点击打开表单</ElButton>
   </FormDialogPortal>
 </template>
 
-<script>
+<script setup lang="tsx">
+import { ref, provide } from 'vue'
 import {
   FormDialog,
   FormLayout,
   FormItem,
   Input,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 import { createSchemaField } from '@formily/vue'
 
 const { SchemaField, SchemaStringField } = createSchemaField({
@@ -68,44 +69,35 @@ const DialogForm = {
   },
 }
 
-export default {
-  components: { Button, FormDialogPortal: FormDialog.Portal },
-  data() {
-    return {
-      portalId: '可以传，也可以不传的ID，默认是form-dialog',
-    }
-  },
-  provide: {
-    foo: '自定义上下文可以直接传到弹窗内部，只需要ID一致即可',
-  },
-  methods: {
-    handleOpen() {
-      FormDialog('弹框表单', this.portalId, DialogForm)
-        .forOpen((payload, next) => {
-          setTimeout(() => {
-            next({
-              initialValues: {
-                aaa: '123',
-              },
-            })
-          }, 1000)
+const FormDialogPortal = FormDialog.Portal
+const portalId = ref('可以传，也可以不传的ID，默认是form-dialog')
+provide('foo', '自定义上下文可以直接传到弹窗内部，只需要ID一致即可')
+
+const handleOpen = () => {
+  FormDialog('弹框表单', portalId.value, DialogForm)
+    .forOpen((payload, next) => {
+      setTimeout(() => {
+        next({
+          initialValues: {
+            aaa: '123',
+          },
         })
-        .forConfirm((payload, next) => {
-          setTimeout(() => {
-            console.log(payload)
-            next(payload)
-          }, 1000)
-        })
-        .forCancel((payload, next) => {
-          setTimeout(() => {
-            console.log(payload)
-            next(payload)
-          }, 1000)
-        })
-        .open()
-        .then(console.log)
-        .catch(console.error)
-    },
-  },
+      }, 1000)
+    })
+    .forConfirm((payload, next) => {
+      setTimeout(() => {
+        console.log(payload)
+        next(payload)
+      }, 1000)
+    })
+    .forCancel((payload, next) => {
+      setTimeout(() => {
+        console.log(payload)
+        next(payload)
+      }, 1000)
+    })
+    .open()
+    .then(console.log)
+    .catch(console.error)
 }
 </script>

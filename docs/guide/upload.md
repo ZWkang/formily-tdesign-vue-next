@@ -18,4 +18,4 @@
 
 ## API
 
-参考 [https://element.eleme.io/#/zh-CN/component/upload](https://element.eleme.io/#/zh-CN/component/upload)
+参考 [https://element-plus.gitee.io/zh-CN/component/upload.html](https://element-plus.gitee.io/zh-CN/component/upload.html)

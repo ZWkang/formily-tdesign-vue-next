@@ -41,7 +41,7 @@
     <FormConsumer>
       <template #default>
         <FormButtonGroup>
-          <Button
+          <ElButton
             :disabled="!formStep.allowBack"
             @click="
               () => {
@@ -50,8 +50,8 @@
             "
           >
             上一步
-          </Button>
-          <Button
+          </ElButton>
+          <ElButton
             :disabled="!formStep.allowNext"
             @click="
               () => {
@@ -60,7 +60,7 @@
             "
           >
             下一步
-          </Button>
+          </ElButton>
           <Submit :disabled="formStep.allowNext" @submit="log">提交</Submit>
         </FormButtonGroup>
       </template>
@@ -68,7 +68,7 @@
   </FormProvider>
 </template>
 
-<script>
+<script setup lang="ts">
 import { createForm } from '@formily/core'
 import { FormProvider, FormConsumer, createSchemaField } from '@formily/vue'
 import {
@@ -77,11 +77,10 @@ import {
   FormButtonGroup,
   Submit,
   Input,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
-import Template from '../editable/template.vue'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 
-const SchemaField = createSchemaField({
+const { SchemaField, SchemaVoidField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     FormStep,
@@ -89,31 +88,10 @@ const SchemaField = createSchemaField({
   },
 })
 const formStep = FormStep.createFormStep()
+const form = createForm()
 
-export default {
-  components: {
-    FormConsumer,
-    FormProvider,
-    FormButtonGroup,
-    Button,
-    Submit,
-    Template,
-    ...SchemaField,
-  },
-
-  data() {
-    const form = createForm()
-
-    return {
-      form,
-      formStep,
-    }
-  },
-  methods: {
-    log() {
-      this.formStep.submit(console.log)
-    },
-  },
+const log = () => {
+  formStep.submit(console.log)
 }
 </script>
 

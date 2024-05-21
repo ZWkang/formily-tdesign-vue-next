@@ -22,35 +22,47 @@
           },
         ]"
       />
+
+      <SchemaStringField
+        name="select2"
+        title="选择框2"
+        x-decorator="FormItem"
+        x-component="Select"
+        :x-component-props="{
+          style: {
+            width: '240px',
+          },
+        }"
+        :enum="[
+          {
+            label: '选项1',
+            value: 1,
+          },
+          {
+            label: '选项2',
+            value: 2,
+          },
+        ]"
+      />
     </SchemaField>
     <Submit @submit="log">提交</Submit>
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { createSchemaField, FormProvider } from '@formily/vue'
-import { FormItem, Select, Submit } from '@formily/tdesign-vue-next'
+import { FormItem, Select, Submit } from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     Select,
   },
 })
 
-export default {
-  components: { FormProvider, ...fields, Submit },
-  data() {
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

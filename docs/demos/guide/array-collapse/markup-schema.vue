@@ -100,7 +100,7 @@
       </SchemaArrayField>
     </SchemaField>
     <FormButtonGroup>
-      <Button
+      <ElButton
         @click="
           () => {
             form.setInitialValues({
@@ -118,13 +118,13 @@
         "
       >
         加载默认数据
-      </Button>
+      </ElButton>
       <Submit @submit="log">提交</Submit>
     </FormButtonGroup>
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/vue'
 import {
@@ -133,10 +133,16 @@ import {
   Submit,
   Input,
   ArrayCollapse,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 
-const SchemaField = createSchemaField({
+const {
+  SchemaField,
+  SchemaArrayField,
+  SchemaObjectField,
+  SchemaVoidField,
+  SchemaStringField,
+} = createSchemaField({
   components: {
     FormItem,
     Input,
@@ -144,27 +150,10 @@ const SchemaField = createSchemaField({
   },
 })
 
-export default {
-  components: {
-    FormProvider,
-    FormButtonGroup,
-    Button,
-    Submit,
-    ...SchemaField,
-  },
+const form = createForm()
 
-  data() {
-    const form = createForm()
-
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(values) {
-      console.log(values)
-    },
-  },
+const log = (values) => {
+  console.log(values)
 }
 </script>
 

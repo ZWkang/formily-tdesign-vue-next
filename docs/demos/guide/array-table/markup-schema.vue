@@ -57,6 +57,7 @@
               title: 'Operations',
               prop: 'operations',
               width: 200,
+              fixed: 'right',
             }"
           >
             <SchemaVoidField x-component="FormItem">
@@ -70,7 +71,7 @@
       </SchemaArrayField>
     </SchemaField>
     <Submit @submit="log">提交</Submit>
-    <Button
+    <ElButton
       @click="
         () => {
           form.setInitialValues({
@@ -80,8 +81,8 @@
       "
     >
       加载10W条超大数据
-    </Button>
-    <Alert
+    </ElButton>
+    <ElAlert
       :style="{ marginTop: '10px' }"
       title="注意：开启formily插件的页面，因为后台有数据通信，会占用浏览器算力，最好在无痕模式(无formily插件)下测试"
       type="warning"
@@ -89,7 +90,7 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/vue'
 import {
@@ -98,10 +99,18 @@ import {
   ArrayTable,
   Input,
   Editable,
-} from '@formily/tdesign-vue-next'
-import { Button, Alert } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton, ElAlert } from 'element-plus'
 
-const fields = createSchemaField({
+const form = createForm()
+
+const {
+  SchemaField,
+  SchemaArrayField,
+  SchemaObjectField,
+  SchemaVoidField,
+  SchemaStringField,
+} = createSchemaField({
   components: {
     FormItem,
     ArrayTable,
@@ -110,23 +119,13 @@ const fields = createSchemaField({
   },
 })
 
-export default {
-  components: { FormProvider, Submit, Button, Alert, ...fields },
-  data() {
-    const form = createForm()
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(...v) {
-      console.log(...v)
-    },
-    range(count) {
-      return Array.from(new Array(count)).map((_, key) => ({
-        aaa: key,
-      }))
-    },
-  },
+const log = (...v) => {
+  console.log(...v)
+}
+
+const range = (count) => {
+  return Array.from(new Array(count)).map((_, key) => ({
+    aaa: key,
+  }))
 }
 </script>

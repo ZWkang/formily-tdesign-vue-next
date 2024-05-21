@@ -34,7 +34,7 @@ import {
   FormItem,
   Input,
   Select,
-} from '@formily/tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
 
 const fields = createSchemaField({ components: { FormItem, Input, Select } })
 

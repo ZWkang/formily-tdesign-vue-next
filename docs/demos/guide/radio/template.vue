@@ -20,26 +20,14 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, Field } from '@formily/vue'
-import { FormItem, Radio, Submit } from '@formily/tdesign-vue-next'
+import { FormItem, Radio, Submit } from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
 
-export default {
-  components: { FormProvider, Field, Submit },
-  data() {
-    return {
-      FormItem,
-      Radio,
-      form,
-    }
-  },
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

@@ -5,10 +5,10 @@
   </FormProvider>
 </template>
 
-<script>
+<script setup lang="ts">
 import { createForm } from '@formily/core'
 import { createSchemaField, FormProvider } from '@formily/vue'
-import { FormItem, Input, Submit, FormGrid } from '@formily/tdesign-vue-next'
+import { FormItem, Input, Submit, FormGrid } from 'formilyjs-tdesign-vue-next'
 
 const schema = {
   type: 'object',
@@ -76,19 +76,7 @@ const { SchemaField } = createSchemaField({
   },
 })
 
-export default {
-  components: { FormProvider, SchemaField, Submit },
-  data() {
-    return {
-      form,
-      schema,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>
-l

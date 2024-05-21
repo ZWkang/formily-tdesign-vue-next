@@ -79,7 +79,7 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm, onFieldChange, onFieldReact } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/vue'
 import {
@@ -89,9 +89,16 @@ import {
   Input,
   Editable,
   Switch,
-} from '@formily/tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
 
-const fields = createSchemaField({
+const {
+  SchemaField,
+  SchemaArrayField,
+  SchemaObjectField,
+  SchemaVoidField,
+  SchemaStringField,
+  SchemaBooleanField,
+} = createSchemaField({
   components: {
     FormItem,
     ArrayTable,
@@ -101,36 +108,26 @@ const fields = createSchemaField({
   },
 })
 
-export default {
-  components: { FormProvider, Submit, ...fields },
-  data() {
-    const form = createForm({
-      effects: () => {
-        //主动联动模式
-        onFieldChange('hideFirstColumn', ['value'], (field) => {
-          field.query('array.column3').take((target) => {
-            console.log('target', target)
-            target.visible = !field.value
-          })
-          field.query('array.*.a2').take((target) => {
-            target.visible = !field.value
-          })
-        })
-        //被动联动模式
-        onFieldReact('array.*.a2', (field) => {
-          field.visible = !field.query('.a1').get('value')
-        })
-      },
+const form = createForm({
+  effects: () => {
+    //主动联动模式
+    onFieldChange('hideFirstColumn', ['value'], (field) => {
+      field.query('array.column3').take((target) => {
+        console.log('target', target)
+        target.visible = !field.value
+      })
+      field.query('array.*.a2').take((target) => {
+        target.visible = !field.value
+      })
     })
+    //被动联动模式
+    onFieldReact('array.*.a2', (field) => {
+      field.visible = !field.query('.a1').get('value')
+    })
+  },
+})
 
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(...v) {
-      console.log(...v)
-    },
-  },
+const log = (...v) => {
+  console.log(...v)
 }
 </script>

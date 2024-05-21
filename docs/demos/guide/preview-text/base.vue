@@ -51,34 +51,21 @@
   </FormLayout>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/vue'
-import { FormLayout, FormItem, PreviewText } from '@formily/tdesign-vue-next'
+import { FormLayout, FormItem, PreviewText } from 'formilyjs-tdesign-vue-next'
 
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     PreviewText,
   },
 })
 
-export default {
-  components: {
-    FormProvider,
-    FormLayout,
-    ...fields,
-  },
-  data() {
-    const form = createForm()
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(v) {
-      console.log(v)
-    },
-  },
+const form = createForm()
+
+const log = (v) => {
+  console.log(v)
 }
 </script>

@@ -19,40 +19,51 @@
   </Form>
 </template>
 
-<script>
-import { createForm, onFieldReact } from '@formily/core'
+<script lang="ts" setup>
+import { createForm, onFieldReact, DataField } from '@formily/core'
 import { createSchemaField } from '@formily/vue'
-import { Form, FormItem, Cascader, Submit } from '@formily/tdesign-vue-next'
+import { Form, FormItem, Cascader, Submit } from 'formilyjs-tdesign-vue-next'
 import { action } from '@formily/reactive'
-import axios from 'axios'
 
 const transformAddress = (data = {}) => {
-  return Object.entries(data).reduce((buf, [key, value]) => {
-    if (typeof value === 'string')
+  return Object.entries(data).reduce(
+    (
+      buf,
+      [key, value]: [
+        string,
+        (
+          | { name: string; code: string; cities: number; districts: number }
+          | string
+        )
+      ]
+    ) => {
+      if (typeof value === 'string')
+        return buf.concat({
+          label: value,
+          value: key,
+        })
+      const { name, code, cities, districts } = value
+      const _cities = transformAddress(cities)
+      const _districts = transformAddress(districts)
       return buf.concat({
-        label: value,
-        value: key,
+        label: name,
+        value: code,
+        children: _cities.length
+          ? _cities
+          : _districts.length
+          ? _districts
+          : undefined,
       })
-    const { name, code, cities, districts } = value
-    const _cities = transformAddress(cities)
-    const _districts = transformAddress(districts)
-    return buf.concat({
-      label: name,
-      value: code,
-      children: _cities.length
-        ? _cities
-        : _districts.length
-        ? _districts
-        : undefined,
-    })
-  }, [])
+    },
+    []
+  )
 }
 
 const useAddress = (pattern) => {
-  onFieldReact(pattern, (field) => {
+  onFieldReact(pattern, (field: DataField) => {
     field.loading = true
-    axios('//unpkg.com/china-location/dist/location.json')
-      .then((res) => res.data)
+    fetch('//unpkg.com/china-location/dist/location.json')
+      .then((res) => res.json())
       .then(
         action.bound((data) => {
           field.dataSource = transformAddress(data)
@@ -67,25 +78,14 @@ const form = createForm({
     useAddress('address')
   },
 })
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     Cascader,
   },
 })
 
-export default {
-  components: { Form, ...fields, Submit },
-  data() {
-    return {
-      form,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>
-l

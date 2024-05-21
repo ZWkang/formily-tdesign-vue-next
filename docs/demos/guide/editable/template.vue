@@ -65,7 +65,7 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, Field, VoidField, ObjectField } from '@formily/vue'
 import {
@@ -75,34 +75,12 @@ import {
   Input,
   DatePicker,
   Editable,
-} from '@formily/tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
 
-export default {
-  components: {
-    FormButtonGroup,
-    FormProvider,
-    Submit,
-    Field,
-    VoidField,
-    ObjectField,
-  },
+const form = createForm()
 
-  data() {
-    const form = createForm()
-
-    return {
-      FormItem,
-      Input,
-      DatePicker,
-      Editable,
-      form,
-    }
-  },
-  methods: {
-    log(values) {
-      console.log(values)
-    },
-  },
+const log = (values) => {
+  console.log(values)
 }
 </script>
 

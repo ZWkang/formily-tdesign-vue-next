@@ -1,15 +1,15 @@
 <template>
-  <Button @click="handleOpen">点击打开表单</Button>
+  <ElButton @click="handleOpen">点击打开表单</ElButton>
 </template>
 
-<script>
+<script setup lang="tsx">
 import {
   FormDrawer,
   FormLayout,
   FormItem,
   Input,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 import { createSchemaField } from '@formily/vue'
 
 const { SchemaField } = createSchemaField({
@@ -72,26 +72,18 @@ const DrawerForm = {
   },
 }
 
-export default {
-  components: { Button },
-  data() {
-    return {}
-  },
-  methods: {
-    handleOpen() {
-      FormDrawer('抽屉表单', DrawerForm)
-        .forOpen((props, next) => {
-          setTimeout(() => {
-            next()
-          }, 1000)
-        })
-        .open({
-          initialValues: {
-            aaa: '123',
-          },
-        })
-        .then(console.log)
-    },
-  },
+const handleOpen = () => {
+  FormDrawer('抽屉表单', DrawerForm)
+    .forOpen((props, next) => {
+      setTimeout(() => {
+        next()
+      }, 1000)
+    })
+    .open({
+      initialValues: {
+        aaa: '123',
+      },
+    })
+    .then(console.log)
 }
 </script>

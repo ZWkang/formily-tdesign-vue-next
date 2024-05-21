@@ -5,10 +5,16 @@
   </Form>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/vue'
-import { Form, FormItem, Select, Submit, Reset } from '@formily/tdesign-vue-next'
+import {
+  Form,
+  FormItem,
+  Select,
+  Submit,
+  Reset,
+} from 'formilyjs-tdesign-vue-next'
 
 const schema = {
   type: 'object',
@@ -43,18 +49,7 @@ const { SchemaField } = createSchemaField({
   },
 })
 
-export default {
-  components: { Form, SchemaField, Submit, Reset },
-  data() {
-    return {
-      form,
-      schema,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

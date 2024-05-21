@@ -1,15 +1,15 @@
 <template>
-  <Button @click="handleOpen">点击打开表单</Button>
+  <ElButton @click="handleOpen">点击打开表单</ElButton>
 </template>
 
-<script>
+<script setup lang="tsx">
 import {
   FormDialog,
   FormLayout,
   FormItem,
   Input,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 import { createSchemaField } from '@formily/vue'
 const { SchemaField } = createSchemaField({
   components: {
@@ -70,39 +70,31 @@ const DialogForm = {
   },
 }
 
-export default {
-  components: { Button },
-  data() {
-    return {}
-  },
-  methods: {
-    handleOpen() {
-      FormDialog('弹框表单', DialogForm)
-        .forOpen((payload, next) => {
-          setTimeout(() => {
-            next({
-              initialValues: {
-                aaa: '123',
-              },
-            })
-          }, 1000)
+const handleOpen = () => {
+  FormDialog('弹框表单', DialogForm)
+    .forOpen((payload, next) => {
+      setTimeout(() => {
+        next({
+          initialValues: {
+            aaa: '123',
+          },
         })
-        .forConfirm((payload, next) => {
-          setTimeout(() => {
-            console.log(payload)
-            next(payload)
-          }, 1000)
-        })
-        .forCancel((payload, next) => {
-          setTimeout(() => {
-            console.log(payload)
-            next(payload)
-          }, 1000)
-        })
-        .open()
-        .then(console.log)
-        .catch(console.error)
-    },
-  },
+      }, 1000)
+    })
+    .forConfirm((payload, next) => {
+      setTimeout(() => {
+        console.log(payload)
+        next(payload)
+      }, 1000)
+    })
+    .forCancel((payload, next) => {
+      setTimeout(() => {
+        console.log(payload)
+        next(payload)
+      }, 1000)
+    })
+    .open()
+    .then(console.log)
+    .catch(console.error)
 }
 </script>

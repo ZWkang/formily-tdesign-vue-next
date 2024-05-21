@@ -26,13 +26,13 @@
 
 > 表格组件
 
-参考 [https://element.eleme.io/#/zh-CN/component/table](https://element.eleme.io/#/zh-CN/component/table)
+参考 [https://element-plus.gitee.io/zh-CN/component/table.html](https://element-plus.gitee.io/zh-CN/component/table.html)
 
 ### ArrayTable.Column
 
 > 表格列
 
-参考 [https://element.eleme.io/#/zh-CN/component/table](https://element.eleme.io/#/zh-CN/component/table)
+参考 [https://element-plus.gitee.io/zh-CN/component/table.html](https://element-plus.gitee.io/zh-CN/component/table.html)
 
 扩展属性
 
@@ -48,12 +48,12 @@
 
 扩展属性
 
-| 属性名 | 类型 | 描述 | 默认值 |
-| ------ | ---- | ---- | ------ ||
-| title | string | 文案 | |
-| method | `'push' | 'unshift'` | 添加方式 | `'push'` |
+| 属性名 | 类型                  | 描述     | 默认值   |
+| ------ | --------------------- | -------- | -------- |
+| title  | string                | 文案     |          |
+| method | `'push' \| 'unshift'` | 添加方式 | `'push'` |
 
-其余参考 [https://element.eleme.io/#/zh-CN/component/button](https://element.eleme.io/#/zh-CN/component/button)
+其余参考 [https://element-plus.gitee.io/zh-CN/component/button.html](https://element-plus.gitee.io/zh-CN/component/button.html)
 
 注意：title 属性可以接收 Field 模型中的 title 映射，也就是在 Field 上传 title 也是生效的
 
@@ -65,7 +65,7 @@
 | ------ | ------ | ---- | ------ |
 | title  | string | 文案 |        |
 
-其余参考 [https://element.eleme.io/#/zh-CN/component/button](https://element.eleme.io/#/zh-CN/component/button)
+其余参考 [https://element-plus.gitee.io/zh-CN/component/button.html](https://element-plus.gitee.io/zh-CN/component/button.html)
 
 注意：title 属性可以接收 Field 模型中的 title 映射，也就是在 Field 上传 title 也是生效的
 
@@ -77,7 +77,7 @@
 | ------ | ------ | ---- | ------ |
 | title  | string | 文案 |        |
 
-其余参考 [https://element.eleme.io/#/zh-CN/component/button](https://element.eleme.io/#/zh-CN/component/button)
+其余参考 [https://element-plus.gitee.io/zh-CN/component/button.html](https://element-plus.gitee.io/zh-CN/component/button.html)
 
 注意：title 属性可以接收 Field 模型中的 title 映射，也就是在 Field 上传 title 也是生效的
 
@@ -89,7 +89,7 @@
 | ------ | ------ | ---- | ------ |
 | title  | string | 文案 |        |
 
-其余参考 [https://element.eleme.io/#/zh-CN/component/button](https://element.eleme.io/#/zh-CN/component/button)
+其余参考 [https://element-plus.gitee.io/zh-CN/component/button.html](https://element-plus.gitee.io/zh-CN/component/button.html)
 
 注意：title 属性可以接收 Field 模型中的 title 映射，也就是在 Field 上传 title 也是生效的
 

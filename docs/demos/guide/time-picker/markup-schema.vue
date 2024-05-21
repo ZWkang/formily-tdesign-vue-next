@@ -30,30 +30,20 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { createSchemaField, FormProvider } from '@formily/vue'
-import { FormItem, TimePicker, Submit } from '@formily/tdesign-vue-next'
+import { FormItem, TimePicker, Submit } from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     TimePicker,
   },
 })
 
-export default {
-  components: { FormProvider, ...fields, Submit },
-  data() {
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

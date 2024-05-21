@@ -32,10 +32,10 @@
 
 ## API
 
-参考 [https://element.eleme.io/#/zh-CN/component/select](https://element.eleme.io/#/zh-CN/component/select)
+参考 [https://element-plus.gitee.io/zh-CN/component/select.html](https://element-plus.gitee.io/zh-CN/component/select.html)
 
 ### 扩展属性
 
-| 属性名  | 类型                                                                                       | 描述 | 默认值 |
-| ------- | ------------------------------------------------------------------------------------------ | ---- | ------ |
-| options | [SelectOptionProps](https://element.eleme.io/#/zh-CN/component/select#option-attributes)[] | 选项 | []     |
+| 属性名  | 类型                                                                                                       | 描述 | 默认值 |
+| ------- | ---------------------------------------------------------------------------------------------------------- | ---- | ------ |
+| options | [SelectOptionProps](https://element-plus.gitee.io/zh-CN/component/select.html#option-%E5%B1%9E%E6%80%A7)[] | 选项 | []     |

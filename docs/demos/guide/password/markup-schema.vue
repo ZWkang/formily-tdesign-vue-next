@@ -2,7 +2,7 @@
   <FormProvider :form="form">
     <SchemaField>
       <SchemaStringField
-        name="input"
+        name="password"
         title="密码框"
         x-decorator="FormItem"
         x-component="Password"
@@ -12,30 +12,20 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { createSchemaField, FormProvider } from '@formily/vue'
-import { FormItem, Password, Submit } from '@formily/tdesign-vue-next'
+import { FormItem, Password, Submit } from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     Password,
   },
 })
 
-export default {
-  components: { FormProvider, ...fields, Submit },
-  data() {
-    return {
-      form,
-    }
-  },
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

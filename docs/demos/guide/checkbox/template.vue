@@ -16,34 +16,22 @@
       :decorator="[FormItem]"
       :component="[Checkbox.Group, { optionType: 'button' }]"
     >
-      <template v-slot:option="{ option }">
+      <!-- <template v-slot:option="{ option }">
         <div>{{ option.label }}</div>
-      </template>
+      </template> -->
     </ArrayField>
     <Submit @submit="onSubmit">提交</Submit>
   </Form>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { Field, ArrayField } from '@formily/vue'
-import { Form, FormItem, Checkbox, Submit } from '@formily/tdesign-vue-next'
+import { Form, FormItem, Checkbox, Submit } from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
 
-export default {
-  components: { Form, Field, ArrayField, Submit },
-  data() {
-    return {
-      FormItem,
-      Checkbox,
-      form,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

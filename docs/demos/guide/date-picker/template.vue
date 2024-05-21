@@ -98,27 +98,14 @@
   </Form>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { Field, ArrayField } from '@formily/vue'
-import { Form, FormItem, DatePicker, Submit } from '@formily/tdesign-vue-next'
+import { Form, FormItem, DatePicker, Submit } from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
 
-export default {
-  components: { Form, Field, ArrayField, Submit },
-  data() {
-    return {
-      FormItem,
-      DatePicker,
-      form,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>
-l

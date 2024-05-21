@@ -15,7 +15,7 @@
       <SchemaStringField
         x-decorator="FormItem"
         title="选择项预览"
-        x-component="PreviewText.Select"
+        x-component="Select"
         :x-component-props="{
           multiple: true,
         }"
@@ -31,28 +31,32 @@
       <SchemaStringField
         x-decorator="FormItem"
         title="日期预览"
-        x-component="PreviewText.DatePicker"
+        x-component="DatePicker"
         default="2020-11-23 22:15:20"
       />
       <SchemaStringField
         x-decorator="FormItem"
         title="日期范围预览"
-        x-component="PreviewText.DatePicker"
+        x-component="DatePicker"
+        :x-component-props="{ type: 'dates' }"
         :default="['2020-11-23 22:15:20', '2020-11-24 22:15:20']"
       />
       <SchemaStringField
         x-decorator="FormItem"
         title="Cascader预览"
-        x-component="PreviewText.Cascader"
+        x-component="Cascader"
         :default="['hangzhou', 'yuhang']"
         :enum="[
-          { label: '杭州', value: 'hangzhou' },
-          { label: '余杭', value: 'yuhang' },
+          {
+            label: '杭州',
+            value: 'hangzhou',
+            children: [{ label: '余杭', value: 'yuhang' }],
+          },
         ]"
       />
     </SchemaField>
     <FormButtonGroup alignFormItem>
-      <Button
+      <ElButton
         @click="
           () => {
             form.setState((state) => {
@@ -60,48 +64,40 @@
             })
           }
         "
-        >切换阅读态</Button
+        >切换阅读态</ElButton
       >
     </FormButtonGroup>
   </Form>
 </template>
 
-<script>
-import { h } from '@vue/composition-api'
+<script lang="ts" setup>
+import { h } from 'vue'
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/vue'
 import {
   Form,
   FormItem,
   Input,
-  PreviewText,
+  Select,
+  DatePicker,
+  Cascader,
+  TimePicker,
   FormButtonGroup,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 
-const fields = createSchemaField({
+const { SchemaField, SchemaStringField } = createSchemaField({
   components: {
     FormItem,
     Input,
-    PreviewText,
+    Select,
+    DatePicker,
+    Cascader,
+    TimePicker,
   },
 })
 
-export default {
-  components: {
-    Form,
-    FormButtonGroup,
-    Button,
-    ...fields,
-  },
-  data() {
-    const form = createForm()
-    return {
-      form,
-      vnode: () => h('div', {}, '123'),
-    }
-  },
+const form = createForm({ readPretty: true })
 
-  mounted() {},
-}
+const vnode = () => h('div', {}, '123')
 </script>

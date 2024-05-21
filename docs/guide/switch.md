@@ -16,4 +16,4 @@
 
 ## API
 
-参考 [https://element.eleme.io/#/zh-CN/component/switch](https://element.eleme.io/#/zh-CN/component/switch)
+参考 [https://element-plus.gitee.io/zh-CN/component/switch.html](https://element-plus.gitee.io/zh-CN/component/switch.html)

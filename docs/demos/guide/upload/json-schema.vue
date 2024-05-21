@@ -7,7 +7,8 @@
   </Form>
 </template>
 
-<script>
+<script lang="ts" setup>
+import { h } from 'vue'
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/vue'
 import {
@@ -16,14 +17,11 @@ import {
   Upload,
   Submit,
   FormButtonGroup,
-} from '@formily/tdesign-vue-next'
-import { Button } from 'tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
+import { ElButton } from 'element-plus'
 
-const UploadButton = {
-  functional: true,
-  render(h) {
-    return h(Button, {}, '上传图片')
-  },
+const UploadButton = () => {
+  return h(ElButton, {}, { default: () => '上传图片' })
 }
 
 const schema = {
@@ -85,18 +83,7 @@ const { SchemaField } = createSchemaField({
   },
 })
 
-export default {
-  components: { Form, SchemaField, Submit, FormButtonGroup },
-  data() {
-    return {
-      form,
-      schema,
-    }
-  },
-  methods: {
-    onSubmit(value) {
-      console.log(value)
-    },
-  },
+const onSubmit = (value) => {
+  console.log(value)
 }
 </script>

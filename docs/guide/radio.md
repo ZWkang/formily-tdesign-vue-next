@@ -16,11 +16,11 @@
 
 ## API
 
-参考 [https://element.eleme.io/#/zh-CN/component/radio](https://element.eleme.io/#/zh-CN/component/radio)
+参考 [https://element-plus.gitee.io/zh-CN/component/radio.html](https://element-plus.gitee.io/zh-CN/component/radio.html)
 
 ### 扩展属性
 
-| 属性名     | 类型                                                                              | 描述     | 默认值  |
-| ---------- | --------------------------------------------------------------------------------- | -------- | ------- |
-| options    | [RadioProps](https://element.eleme.io/#/zh-CN/component/radio#radio-attributes)[] | 选项     | []      |
-| optionType | default/button                                                                    | 样式类型 | default |
+| 属性名     | 类型                                                                                              | 描述     | 默认值  |
+| ---------- | ------------------------------------------------------------------------------------------------- | -------- | ------- |
+| options    | [RadioProps](https://element-plus.gitee.io/zh-CN/component/radio.html#radio-%E5%B1%9E%E6%80%A7)[] | 选项     | []      |
+| optionType | default/button                                                                                    | 样式类型 | default |

@@ -77,7 +77,7 @@
         title="文本框"
         :decorator="[FormItem]"
         :component="[
-          TextArea,
+          Input.TextArea,
           {
             style: {
               width: 400,
@@ -93,43 +93,21 @@
   </FormProvider>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { createForm } from '@formily/core'
 import { FormProvider, Field, VoidField } from '@formily/vue'
 import {
   FormLayout,
   FormItem,
   Input,
-  TextArea,
   Submit,
   Space,
   FormButtonGroup,
-} from '@formily/tdesign-vue-next'
+} from 'formilyjs-tdesign-vue-next'
 
 const form = createForm()
 
-export default {
-  components: {
-    FormProvider,
-    FormLayout,
-    FormButtonGroup,
-    VoidField,
-    Field,
-    Submit,
-  },
-  data() {
-    return {
-      FormItem,
-      Input,
-      TextArea,
-      Space,
-      form,
-    }
-  },
-  methods: {
-    log(value) {
-      console.log(value)
-    },
-  },
+const log = (value) => {
+  console.log(value)
 }
 </script>

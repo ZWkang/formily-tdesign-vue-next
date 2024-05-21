@@ -16,4 +16,4 @@
 
 ### ArrayTabs
 
-参考 [https://element.eleme.io/#/zh-CN/component/tab](https://element.eleme.io/#/zh-CN/component/tab)
+参考 [https://element-plus.gitee.io/zh-CN/component/tabs.html](https://element-plus.gitee.io/zh-CN/component/tabs.html)
